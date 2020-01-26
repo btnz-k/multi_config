@@ -1,0 +1,59 @@
+#!/bin/bash
+#
+# Title:       multi_config
+# Author(s):   btnz
+# Description: Clones Git Repos
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Clone AutoRecon
+      git:
+        repo: "https://github.com/Tib3rius/AutoRecon.git"
+        dest: /opt/autorecon
+        force: yes
+
+    - name: Clone CrackMapExec
+      git:
+        repo: "https://github.com/byt3bl33d3r/CrackMapExec.git"
+        dest: /opt/cme
+        force: yes
+        recursive: yes
+
+    - name: Clone SecLists
+      git:
+        repo: "https://github.com/danielmiessler/SecLists.git"
+        dest: /opt/seclists
+        force: yes
+
+    - name: Clone PCredz
+      git:
+        repo: "https://github.com/lgandx/PCredz.git"
+        dest: /opt/pcredz
+        force: yes
+
+    - name: Clone HandyHeaderHacker
+      git:
+        repo: "https://github.com/vpnguy-zz/HandyHeaderHacker.git"
+        dest: /opt/hhh
+        force: yes
+
+    - name: Clone Net-Creds
+      git:
+        repo: "https://github.com/DanMcInerney/net-creds.git"
+        dest: /opt/net-creds
+        force: yes
+
+    - name: Clone Prebellico
+      git:
+        repo: "https://github.com/unixrox/prebellico.git"
+        dest: /opt/prebellico
+        force: yes
+
+    - name: Clone Responder
+      git:
+        repo: "https://github.com/lgandx/Responder.git"
+        dest: /opt/responder
+        force: yes

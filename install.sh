@@ -5,15 +5,12 @@
 ################################################################################
 
 # List packages vital to the start process
-package="curl wget software-properties-common git nano intel-gpu-tools python-apt htop mc lshw zip unzip dialog sudo htop lshw fortune"
+reqpackage="python-apt python3-apt aptitude ansible"
 
 # Presents the Users with a Quick Notice Prior to the Installation
 tee <<-NOTICE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- INSTALLING: Multi-Config by BTNZ
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-By installing the use of this product; you agree to the terms and conditions of
-the GNUv3 License.
+🌎  INSTALLING: Multi-Config by BTNZ
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTICE
@@ -23,92 +20,51 @@ sleep 3
 
 # Make Critical Folders
 mkdir -p ~/.screen/{logs,caps} ~/client/recon /opt/multi/{stage,data,logs} /opt/multi/var/install
-#mkdir -p /pg /pg/logs /pg/data /pg/logs /pg/tmp /pg/var/install
 chmod 775 ~/.screen/{logs,caps} ~/client/recon /opt/multi/{stage,data,logs} /opt/multi/var/install
-#chmod 775 /pg /pg/logs /pg/data /pg/logs /pg/tmp /pg/var/install
 chown 1000:1000 ~/.screen/{logs,caps} ~/client/recon /opt/multi/{stage,data,logs} /opt/multi/var/install
-#chown 1000:1000 /pg /pg/logs /pg/data /pg/logs /pg/tmp /pg/var/install
-rm -rf /opt/multi/var/first.update 1>/dev/null 2>&1
-
-# Clone the Program to Stage for Installation
-git clone https://github.com/btnz-k/multi_config.git /opt/multi/stage
-
-# Checking to See if the Installer ever Installed Python; if so... skip
-var37="/opt/multi/var/python.firstime"
-if [ ! -e "${var37}" ]; then
-  bash /opt/multi/stage/pyansible.sh
-  touch /opt/multi/var/python.firstime
-fi
 
 tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⌛  Configuring Base Packages - Please Standby
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Executing a Base Install - Please Standby
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-apt-get install lsb-release -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
-apt-get install software-properties-common -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
+#reqpackage="python-apt python3-apt aptitude ansible"
+DEBIAN_FRONTEND=noninteractive apt-get install $reqpackage -yqq 2>&1 >> /dev/null
 
 tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⌛  Installing Required Packages - Please Standby
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛  Updating the Server - Please Standby (Can Take 1-2 Minutes)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-fullrel=$(lsb_release -sd)
-osname=$(lsb_release -si)
-relno=$(lsb_release -sr)
-relno=$(printf "%.0f\n" "$relno")
-hostname=$(hostname -I | awk '{print $1}')
-# add repo
 
-if echo $osname "Debian" &>/dev/null; then
-	add-apt-repository main 2>&1 >> /dev/null
-	add-apt-repository non-free 2>&1 >> /dev/null
-	add-apt-repository contrib 2>&1 >> /dev/null
-elif echo $osname "Ubuntu" &>/dev/null; then
-	add-apt-repository main 2>&1 >> /dev/null
-	add-apt-repository universe 2>&1 >> /dev/null
-	add-apt-repository restricted 2>&1 >> /dev/null
-	add-apt-repository multiverse 2>&1 >> /dev/null
-elif echo $osname "Rasbian" "Fedora" "CentOS"; then
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔ System Warning!
+⌛  Updating the Server - Please Standby 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Supported: UB 16/18.04 ~ LTS/SERVER and Debian 9+
-This server may not be supported due to having the incorrect OS detected!
 
-For more information, read:
-https://pgblitz.com/threads/pg-install-instructions.243/
 EOF
-  sleep 10
-fi
 
-apt-get update -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
-apt-get upgrade -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
-apt-get dist-upgrade -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
-apt-get autoremove -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
-apt-get install $package -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
+
+
+############################################################################################
+
 
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Finished - Basic Updates
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 
-ansible-playbook /pg/stage/clone.yml
-bash /pg/stage/pgcloner/solo/update.sh
+ansible-playbook /opt/multi/stage/clone.yml
+bash /opt/multi/stage/cloner/solo/update.sh
+
+
+
+
 
 # Copy Starting Commands for PGBlitz
 path="/pg/stage/alias"
