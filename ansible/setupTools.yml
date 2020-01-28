@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# Title:       multi_config
+# Author(s):   btnz
+# Description: Configures Tools
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Configure AutoRecon
+      replace:
+        path: '{{ item.path }}'
+        regexp: '{{ item.regexp1 }}'
+        replace: '{{ item.replace }}'
+      with_items:
+        - { path: '/opt/autorecon/config/service-scans.toml', regexp1: '-oX', replace: '-oA' }
+        - { path: '/opt/autorecon/config/service-scans.toml', regexp1: '\.xml', replace: '' }
+        - { path: '/opt/autorecon/config/port-scan-profiles.toml', regexp1: '-oX', replace: '-oA' }
+        - { path: '/opt/autorecon/config/port-scan-profiles.toml', regexp1: '\.xml', replace: '' }
+
+    - name: Configure .ScreenRC
+      get_url:
+        url: 'https://gist.githubusercontent.com/btnz-k/5cc3e77d12dca2e93ca10ba9b6d4c56a/raw/2f8f4185f7e1eee60be17b4fbc00f5aa676cb5a8/.screenrc'
+        dest: '~/.screenrc'
+        backup: yes
+        force: yes
+
+    - name: Configure .BashRC
+      get_url:
+        url: 'https://gist.githubusercontent.com/btnz-k/c79f19b59cc605c0c1ad82ddfcd87abc/raw/14d234bd59797066d14d6c379148d820e9e75f04/.bashrc'
+        dest: '~/.bashrc'
+        backup: yes
+        force: yes
+
+    - name: Configure Responder
+      replace:
+        path: '{{ item.path }}'
+        regexp: '{{ item.regexp1 }}'
+        replace: '{{ item.replace }}'
+      with_items:
+        - { path: '/opt/responder/Responder.conf', regexp1: 'files/AccessDenied.html', replace: '/opt/responder/files/AccessDenied.html' }
+        - { path: '/opt/responder/Responder.conf', regexp1: 'files/BindShell.exe', replace: '/opt/responder/files/BindShell.exe' }
+
+    - name: Configure CrackMapExec - Setup pipenv
+      command: "pipenv install --user pipenv"
+      args:
+        chdir: "/opt/crackmapexec/"
+
+    - name: Configure CrackMapExec - Install CME in pipenv
+      command: "pipenv run setup.py install --user pipenv"
+      args:
+        chdir: "/opt/crackmapexec/"
+
+    - name: Create Symlinks
+      file:
+        src: '{{ item.src }}'
+        dest: '{{ item.dst }}'
+        state: link
+      with_items:
+        - { src: '/opt/autorecon/autorecon.py', dst: '/usr/local/bin/autorecon'}
+        - { src: '/opt/responder/Responder.py', dst: '/usr/local/bin/responder'}

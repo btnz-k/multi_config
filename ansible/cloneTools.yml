@@ -18,7 +18,7 @@
     - name: Clone CrackMapExec
       git:
         repo: "https://github.com/byt3bl33d3r/CrackMapExec.git"
-        dest: /opt/cme
+        dest: /opt/crackmapexec
         force: yes
         recursive: yes
 
@@ -56,4 +56,17 @@
       git:
         repo: "https://github.com/lgandx/Responder.git"
         dest: /opt/responder
+        force: yes
+
+    - name: Clone CME Module ProcDump
+      get_url:
+        url: 'https://gist.githubusercontent.com/btnz-k/e9bfa3437e40cbc97280712bcf643e85/raw/3af447254f2546f0e9c4c36f071f0f14afe472a9/procdump.py'
+        dest: 'dest: '/opt/crackmapexec/cme/modules/procdump.py'
+        backup: yes
+        force: yes
+
+    - name: Clone fast-recon
+      git:
+        repo: "https://github.com/DanMcInerney/fast-recon.git"
+        dest: /opt/fast-recon
         force: yes
