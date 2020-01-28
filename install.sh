@@ -39,7 +39,7 @@ tee <<-EOF
 
 EOF
 
-ansible-playbook ./installPackages.yml
+ansible-playbook ./ansible/installPackages.yml
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -48,7 +48,7 @@ tee <<-EOF
 
 EOF
 
-ansible-playbook ./cloneTools.yml
+ansible-playbook ./ansible/cloneTools.yml
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -57,7 +57,7 @@ tee <<-EOF
 
 EOF
 
-ansible-playbook ./setupTools.yml
+ansible-playbook ./ansible/setupTools.yml
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
