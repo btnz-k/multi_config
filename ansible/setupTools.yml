@@ -44,16 +44,6 @@
         - { path: '/opt/responder/Responder.conf', regexp1: 'files/AccessDenied.html', replace: '/opt/responder/files/AccessDenied.html' }
         - { path: '/opt/responder/Responder.conf', regexp1: 'files/BindShell.exe', replace: '/opt/responder/files/BindShell.exe' }
 
-    - name: Configure CrackMapExec - Setup pipenv
-      command: 'pip install --user pipenv'
-      args:
-        chdir: '/opt/crackmapexec/'
-
-    - name: Configure CrackMapExec - Install CME in pipenv
-      command: 'pipenv run setup.py install'
-      args:
-        chdir: '/opt/crackmapexec/'
-
     - name: Create Symlinks
       file:
         src: '{{ item.src }}'
@@ -62,3 +52,11 @@
       with_items:
         - { src: '/opt/autorecon/autorecon.py', dst: '/usr/local/bin/autorecon'}
         - { src: '/opt/responder/Responder.py', dst: '/usr/local/bin/responder'}
+
+    - name: Configure CrackMapExec - Setup pipenv
+      command: 'pip install --user pipenv'
+
+    - name: Configure CrackMapExec - Install CME in pipenv
+      command: 'pipenv run python setup.py install'
+      args:
+        chdir: '/opt/crackmapexec/'
