@@ -12,62 +12,62 @@
 
     - name: Clone AutoRecon
       git:
-        repo: "https://github.com/Tib3rius/AutoRecon.git"
+        repo: 'https://github.com/Tib3rius/AutoRecon.git'
         dest: /opt/autorecon
         force: yes
 
     - name: Clone CrackMapExec
       git:
-        repo: "https://github.com/byt3bl33d3r/CrackMapExec.git"
+        repo: 'https://github.com/byt3bl33d3r/CrackMapExec.git'
         dest: /opt/crackmapexec
         force: yes
         recursive: yes
 
     - name: Clone SecLists
       git:
-        repo: "https://github.com/danielmiessler/SecLists.git"
+        repo: 'https://github.com/danielmiessler/SecLists.git'
         dest: /opt/seclists
         force: yes
 
     - name: Clone PCredz
       git:
-        repo: "https://github.com/lgandx/PCredz.git"
+        repo: 'https://github.com/lgandx/PCredz.git'
         dest: /opt/pcredz
         force: yes
 
     - name: Clone HandyHeaderHacker
       git:
-        repo: "https://github.com/vpnguy-zz/HandyHeaderHacker.git"
+        repo: 'https://github.com/vpnguy-zz/HandyHeaderHacker.git'
         dest: /opt/hhh
         force: yes
 
     - name: Clone Net-Creds
       git:
-        repo: "https://github.com/DanMcInerney/net-creds.git"
+        repo: 'https://github.com/DanMcInerney/net-creds.git'
         dest: /opt/net-creds
         force: yes
 
     - name: Clone Prebellico
       git:
-        repo: "https://github.com/unixrox/prebellico.git"
+        repo: 'https://github.com/unixrox/prebellico.git'
         dest: /opt/prebellico
         force: yes
 
     - name: Clone Responder
       git:
-        repo: "https://github.com/lgandx/Responder.git"
+        repo: 'https://github.com/lgandx/Responder.git'
         dest: /opt/responder
         force: yes
 
     - name: Clone CME Module ProcDump
       get_url:
         url: 'https://gist.githubusercontent.com/btnz-k/e9bfa3437e40cbc97280712bcf643e85/raw/3af447254f2546f0e9c4c36f071f0f14afe472a9/procdump.py'
-        dest: 'dest: '/opt/crackmapexec/cme/modules/procdump.py'
+        dest: '/opt/crackmapexec/cme/modules/procdump.py'
         backup: yes
         force: yes
 
     - name: Clone fast-recon
       git:
-        repo: "https://github.com/DanMcInerney/fast-recon.git"
+        repo: 'https://github.com/DanMcInerney/fast-recon.git'
         dest: /opt/fast-recon
         force: yes

@@ -10,7 +10,7 @@ reqpackage="python-apt python3-apt aptitude ansible"
 # Presents the Users with a Quick Notice Prior to the Installation
 tee <<-NOTICE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  INSTALLING: Multi-Config by BTNZ
+⌛  INSTALLING: Multi-Config by BTNZ
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTICE
