@@ -50,7 +50,7 @@
         chdir: '/opt/crackmapexec/'
 
     - name: Configure CrackMapExec - Install CME in pipenv
-      command: 'pipenv run setup.py install --user pipenv'
+      command: 'pipenv run setup.py install'
       args:
         chdir: '/opt/crackmapexec/'
 

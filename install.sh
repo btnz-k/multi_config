@@ -7,6 +7,12 @@
 # List packages vital to the start process
 reqpackage="python-apt python3-apt aptitude ansible"
 
+# make sure this is running as sudo
+if [ `whoami` != root ]; then
+    echo Please run this script as root or using sudo
+    exit
+fi
+
 # Presents the Users with a Quick Notice Prior to the Installation
 tee <<-NOTICE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
