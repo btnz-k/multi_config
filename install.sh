@@ -26,8 +26,6 @@ sleep 3
 
 # Make Critical Folders
 mkdir -p ~/.screen/{logs,caps} ~/client/recon 
-chmod 775 ~/.screen/{logs,caps} ~/client/recon
-chown -R 1000:1000 ~/.screen/{logs,caps} ~/client/recon
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -64,6 +62,7 @@ tee <<-EOF
 EOF
 
 ansible-playbook ./ansible/setupTools.yml
+chown -R 1000:1000 ~/.screen/{logs,caps} ~/client/recon /opt/
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

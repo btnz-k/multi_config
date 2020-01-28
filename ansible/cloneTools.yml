@@ -59,11 +59,10 @@
         dest: /opt/responder
         force: yes
 
-    - name: Clone CME Module ProcDump
+    - name: Download CME Module ProcDump
       get_url:
         url: 'https://gist.githubusercontent.com/btnz-k/e9bfa3437e40cbc97280712bcf643e85/raw/3af447254f2546f0e9c4c36f071f0f14afe472a9/procdump.py'
         dest: '/opt/crackmapexec/cme/modules/procdump.py'
-        backup: yes
         force: yes
 
     - name: Clone fast-recon
