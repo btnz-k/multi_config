@@ -6,6 +6,7 @@
 
 # List packages vital to the start process
 reqpackage="python-apt python3-apt aptitude ansible"
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 
 # make sure this is running as sudo
 if [ `whoami` != root ]; then
@@ -61,12 +62,17 @@ tee <<-EOF
 
 EOF
 
+curl -o "$USER_HOME/.screenrc" "https://gist.githubusercontent.com/btnz-k/5cc3e77d12dca2e93ca10ba9b6d4c56a/raw/2f8f4185f7e1eee60be17b4fbc00f5aa676cb5a8/.screenrc"
+curl -o "$USER_HOME/.bashrc" "https://gist.githubusercontent.com/btnz-k/c79f19b59cc605c0c1ad82ddfcd87abc/raw/14d234bd59797066d14d6c379148d820e9e75f04/.bashrc"
+
 ansible-playbook ./ansible/setupTools.yml
 chown -R 1000:1000 ~/.screen/{logs,caps} ~/client/recon /opt/
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Finished!
+
+  Exit shell and restart for best experience!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
