@@ -45,14 +45,14 @@
         - { path: '/opt/responder/Responder.conf', regexp1: 'files/BindShell.exe', replace: '/opt/responder/files/BindShell.exe' }
 
     - name: Configure CrackMapExec - Setup pipenv
-      command: "pipenv install --user pipenv"
+      command: 'pip install --user pipenv'
       args:
-        chdir: "/opt/crackmapexec/"
+        chdir: '/opt/crackmapexec/'
 
     - name: Configure CrackMapExec - Install CME in pipenv
-      command: "pipenv run setup.py install --user pipenv"
+      command: 'pipenv run setup.py install --user pipenv'
       args:
-        chdir: "/opt/crackmapexec/"
+        chdir: '/opt/crackmapexec/'
 
     - name: Create Symlinks
       file:
