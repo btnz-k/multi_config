@@ -29,7 +29,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-#reqpackage="python-apt python3-apt aptitude ansible"
+
 DEBIAN_FRONTEND=noninteractive apt-get install $reqpackage -yqq 2>&1 >> /dev/null
 
 tee <<-EOF
