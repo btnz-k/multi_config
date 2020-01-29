@@ -21,7 +21,6 @@
         - { path: '/opt/autorecon/config/port-scan-profiles.toml', regexp1: '-oX', replace: '-oA' }
         - { path: '/opt/autorecon/config/port-scan-profiles.toml', regexp1: '\.xml', replace: '' }
 
-
     - name: Configure Responder
       replace:
         path: '{{ item.path }}'
@@ -39,6 +38,18 @@
       with_items:
         - { src: '/opt/autorecon/autorecon.py', dst: '/usr/local/bin/autorecon'}
         - { src: '/opt/responder/Responder.py', dst: '/usr/local/bin/responder'}
+
+    - name: Download .screenrc
+      get_url:
+        url: 'https://gist.githubusercontent.com/btnz-k/5cc3e77d12dca2e93ca10ba9b6d4c56a/raw/2f8f4185f7e1eee60be17b4fbc00f5aa676cb5a8/.screenrc'
+        dest: '/home/kali/.screenrc'
+        force: yes
+
+    - name: Download .bashrc
+      get_url:
+        url: 'https://gist.githubusercontent.com/btnz-k/c79f19b59cc605c0c1ad82ddfcd87abc/raw/14d234bd59797066d14d6c379148d820e9e75f04/.bashrc'
+        dest: '/home/kali/.bashrc'
+        force: yes
 
     - name: Configure CrackMapExec - Setup pipenv
       become_user: kali
