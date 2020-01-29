@@ -63,7 +63,7 @@
 
     - name: Configure CrackMapExec - RunOnce
       become_user: kali
-      command: 'pipenv run crackmapexec'
+      command: 'pipenv run crackmapexec -h'
       args:
         chdir: '/opt/crackmapexec/'
 
