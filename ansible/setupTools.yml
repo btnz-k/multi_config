@@ -68,5 +68,4 @@
         chdir: '/opt/crackmapexec/'
 
     - name: Configure MSFConsole - Init DB
-      become_user: kali
       command: 'msfdb init'
