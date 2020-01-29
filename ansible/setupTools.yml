@@ -60,3 +60,13 @@
       command: 'pipenv run python setup.py install'
       args:
         chdir: '/opt/crackmapexec/'
+
+    - name: Configure CrackMapExec - RunOnce
+      become_user: kali
+      command: 'pipenv run crackmapexec'
+      args:
+        chdir: '/opt/crackmapexec/'
+
+    - name: Configure MSFConsole - Init DB
+      become_user: kali
+      command: 'msfdb init'
