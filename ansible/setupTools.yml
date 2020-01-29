@@ -41,9 +41,11 @@
         - { src: '/opt/responder/Responder.py', dst: '/usr/local/bin/responder'}
 
     - name: Configure CrackMapExec - Setup pipenv
+      become_user: 1000
       command: 'pip install --user pipenv'
 
     - name: Configure CrackMapExec - Install CME in pipenv
+      become_user: 1000
       command: 'pipenv run python setup.py install'
       args:
         chdir: '/opt/crackmapexec/'
