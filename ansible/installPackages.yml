@@ -12,7 +12,7 @@
 
     - name: Install Required Packages...
       apt:
-        name: ['build-essential', 'curl', 'dialog', 'dsniff', 'fortune', 'git', 'gobuster', 'htop', 'intel-gpu-tools', 'libffi-dev', 'libssl-dev', 'lshw', 'mc', 'nano', 'netdiscover', 'oscanner', 'pipenv', 'proxychains4', 'python-apt', 'python-dev', 'python3-pip', 'smtp-user-enum', 'software-properties-common', 'sudo', 'tnscmd10g', 'unzip', 'wget', 'wkhtmltopdf', 'zip', 'p7zip']
+        name: ['build-essential', 'curl', 'dialog', 'dsniff', 'fortune', 'git', 'gobuster', 'htop', 'intel-gpu-tools', 'libffi-dev', 'libssl-dev', 'lshw', 'mc', 'nano', 'netdiscover', 'oscanner', 'pipenv', 'proxychains4', 'python-apt', 'python-dev', 'python-pip', 'python3-pip', 'smtp-user-enum', 'software-properties-common', 'sudo', 'tnscmd10g', 'unzip', 'wget', 'wkhtmltopdf', 'zip', 'p7zip']
         update_cache: yes
         cache_valid_time: 3600
 
