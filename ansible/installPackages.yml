@@ -6,7 +6,7 @@
 ################################################################################
 ---
 - hosts: localhost
-  connection: local
+  localhost_warning: false
   become: yes
   gather_facts: false
   tasks:
