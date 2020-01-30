@@ -53,9 +53,10 @@
         force: yes
 
     - name: Download mount-shared-folders
-      get_url: 'https://gist.githubusercontent.com/btnz-k/0d2c46c4405abef7e257c7cf861b5db2/raw/22ec541cb3ac7f97832da7c39c36a4a51ea10aac/mount-shared-folders'
-      dest: '/usr/local/bin/mount-shared-folders'
-      force: yes
+      get_url: 
+        url: 'https://gist.githubusercontent.com/btnz-k/0d2c46c4405abef7e257c7cf861b5db2/raw/22ec541cb3ac7f97832da7c39c36a4a51ea10aac/mount-shared-folders'
+        dest: '/usr/local/bin/mount-shared-folders'
+        force: yes
 
     - name: Setting mount-shared-folders as executable (a+x)
       file: 

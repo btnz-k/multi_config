@@ -25,7 +25,7 @@
 #test this fool!
     - name: Install libpcap.deb
       apt:
-        deb:'/tmp/libpcap.deb'
+        deb: '/tmp/libpcap.deb'
 
     - name: Update all packages to the latest version
       apt:
