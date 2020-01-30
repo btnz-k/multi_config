@@ -26,16 +26,11 @@
       apt:
         deb: '/tmp/libpcap.deb'
 
-    - name: Download GoLang
-      get_url: 
-        url: 'https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz'
-        dest: '/tmp/go.tar.gz'
-        force: yes
-
     - name: Extract GoLang
-      command: 'tar -C /usr/local -xvf go.tar.gz'
-      args: 
-        chdir: '/tmp'
+      unarchive:
+        src: 'https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz'
+        dest: '/usr/local/'
+        remote_src: yes
 
     - name: Update all packages to the latest version
       apt:
