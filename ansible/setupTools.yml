@@ -38,6 +38,7 @@
       with_items:
         - { src: '/opt/autorecon/autorecon.py', dst: '/usr/local/bin/autorecon'}
         - { src: '/opt/responder/Responder.py', dst: '/usr/local/bin/responder'}
+        - { src: '/opt/seclists', dst: '/usr/share/seclists'}
 
     - name: Download .screenrc
       get_url:
@@ -50,6 +51,16 @@
         url: 'https://gist.githubusercontent.com/btnz-k/c79f19b59cc605c0c1ad82ddfcd87abc/raw/14d234bd59797066d14d6c379148d820e9e75f04/.bashrc'
         dest: '/home/kali/.bashrc'
         force: yes
+
+    - name: Download mount-shared-folders
+      get_url: 'https://gist.githubusercontent.com/btnz-k/0d2c46c4405abef7e257c7cf861b5db2/raw/22ec541cb3ac7f97832da7c39c36a4a51ea10aac/mount-shared-folders'
+      dest: '/usr/local/bin/mount-shared-folders'
+      force: yes
+
+    - name: Setting mount-shared-folders as executable (a+x)
+      file: 
+        dest: '/usr/local/bin/mount-shared-folders'
+        mode: a+x
 
     - name: Configure CrackMapExec - Setup pipenv
       become_user: kali
