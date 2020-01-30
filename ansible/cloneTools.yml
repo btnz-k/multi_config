@@ -59,6 +59,12 @@
         dest: /opt/responder
         force: yes
 
+    - name: Clone Dropper2
+      git:
+        repo: 'https://github.com/im4x5yn74x/dropper2.git'
+        dest: /opt/dropper2
+        force: yes
+
     - name: Download CME Module ProcDump
       get_url:
         url: 'https://gist.githubusercontent.com/btnz-k/e9bfa3437e40cbc97280712bcf643e85/raw/3af447254f2546f0e9c4c36f071f0f14afe472a9/procdump.py'
