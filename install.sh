@@ -14,38 +14,38 @@ if [ `whoami` != root ]; then
 fi
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "⌛  INSTALLING: Multi-Config by BTNZ"
+echo "   INSTALLING: Multi-Config by BTNZ"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 sleep 3
 mkdir -p /home/kali/.screen/{logs,caps} /home/kali/client/recon 
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "⌛  Installing Core Packages - Please Standby"
+echo "   Installing Core Packages - Please Standby"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 DEBIAN_FRONTEND=noninteractive apt-get install $reqpackage -yqq 2>&1 >> /dev/null
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "⌛  Installing Packages Required by Tools - Please Standby"
+echo "   Installing Packages Required by Tools - Please Standby"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 ANSIBLE_LOCALHOST_WARNING=false ansible-playbook ./ansible/installPackages.yml
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "⌛  Cloning Tools - Please Standby "
+echo "   Cloning Tools - Please Standby "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 ANSIBLE_LOCALHOST_WARNING=false ansible-playbook ./ansible/cloneTools.yml
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "⌛  Configuring Tools - Please Standby "
+echo "   Configuring Tools - Please Standby "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 chown -R kali:kali /home/kali/.screen/{logs,caps} /home/kali/client/recon /opt/
 ANSIBLE_LOCALHOST_WARNING=false ansible-playbook ./ansible/setupTools.yml
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "✅ Finished!"
+echo "  Finished!"
 echo "  Restart shell for best experience!"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
