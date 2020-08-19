@@ -16,10 +16,10 @@
         regexp: '{{ item.regexp1 }}'
         replace: '{{ item.replace }}'
       with_items:
-        - { path: '/opt/autorecon/config/service-scans.toml', regexp1: '-oX', replace: '-oA' }
-        - { path: '/opt/autorecon/config/service-scans.toml', regexp1: '\.xml', replace: '' }
-        - { path: '/opt/autorecon/config/port-scan-profiles.toml', regexp1: '-oX', replace: '-oA' }
-        - { path: '/opt/autorecon/config/port-scan-profiles.toml', regexp1: '\.xml', replace: '' }
+        - { path: '/opt/autorecon/src/autorecon/config/service-scans.toml', regexp1: '-oX', replace: '-oA' }
+        - { path: '/opt/autorecon/src/autorecon/config/service-scans.toml', regexp1: '\.xml', replace: '' }
+        - { path: '/opt/autorecon/src/autorecon/config/port-scan-profiles.toml', regexp1: '-oX', replace: '-oA' }
+        - { path: '/opt/autorecon/src/autorecon/config/port-scan-profiles.toml', regexp1: '\.xml', replace: '' }
 
     - name: Configure Responder
       replace:
@@ -36,7 +36,7 @@
         dest: '{{ item.dst }}'
         state: link
       with_items:
-        - { src: '/opt/autorecon/autorecon.py', dst: '/usr/local/bin/autorecon'}
+        - { src: '/opt/autorecon/src/autorecon/autorecon.py', dst: '/usr/local/bin/autorecon'}
         - { src: '/opt/responder/Responder.py', dst: '/usr/local/bin/responder'}
         - { src: '/opt/seclists', dst: '/usr/share/seclists'}
 
