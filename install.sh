@@ -18,7 +18,7 @@ echo "   INSTALLING: Multi-Config by BTNZ"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 sleep 3
-mkdir -p /home/kali/.screen/{logs,caps} /home/kali/client/recon 
+mkdir -p ~/.screen/{logs,caps} ~/client/recon 
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "   Installing Core Packages - Please Standby"
