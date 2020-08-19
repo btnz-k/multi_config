@@ -64,17 +64,17 @@
         mode: a+x
 
     - name: Configure CrackMapExec - Setup pipenv
-      become_user: kali
+      become_user: eweber
       command: 'pip install --user pipenv'
 
     - name: Configure CrackMapExec - Install CME in pipenv
-      become_user: kali
+      become_user: eweber
       command: 'pipenv run python setup.py install'
       args:
         chdir: '/opt/crackmapexec/'
 
     - name: Configure CrackMapExec - RunOnce
-      become_user: kali
+      become_user: eweber
       command: 'pipenv run crackmapexec -h'
       args:
         chdir: '/opt/crackmapexec/'
