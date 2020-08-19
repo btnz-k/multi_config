@@ -12,7 +12,7 @@
 
     - name: Install Required Packages...
       apt:
-        name: ['build-essential', 'curl', 'dialog', 'dsniff', 'fortune', 'git', 'gobuster', 'golang', 'htop', 'intel-gpu-tools', 'libffi-dev', 'libssl-dev', 'lshw', 'mc', 'nano', 'netdiscover', 'oscanner', 'p7zip', 'pipenv', 'proxychains4', 'python-apt', 'python-dev', 'python-pip', 'python3-pip', 'smtp-user-enum', 'software-properties-common', 'sudo', 'tnscmd10g', 'unzip', 'wget', 'wkhtmltopdf', 'zip', 'zaproxy']
+        name: ['build-essential', 'curl', 'dialog', 'dsniff', 'fortune', 'git', 'golang-go', 'golang', 'htop', 'intel-gpu-tools', 'libffi-dev', 'libssl-dev', 'lshw', 'mc', 'nano', 'netdiscover', 'oscanner', 'p7zip', 'pipenv', 'proxychains4', 'python-apt', 'python-dev', 'python-pip', 'python3-pip', 'smtp-user-enum', 'software-properties-common', 'sudo', 'tnscmd10g', 'unzip', 'wget', 'wkhtmltopdf', 'zip', 'zaproxy']
         update_cache: yes
         cache_valid_time: 3600
 
@@ -25,12 +25,6 @@
     - name: Install libpcap.deb
       apt:
         deb: '/tmp/libpcap.deb'
-
-    - name: Extract GoLang
-      unarchive:
-        src: 'https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz'
-        dest: '/usr/local/'
-        remote_src: yes
 
     - name: Update all packages to the latest version
       apt:
