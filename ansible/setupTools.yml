@@ -16,10 +16,10 @@
         regexp: '{{ item.regexp1 }}'
         replace: '{{ item.replace }}'
       with_items:
-        - { path: '/opt/autorecon/src/autorecon/config/service-scans.toml', regexp1: '-oX', replace: '-oA' }
-        - { path: '/opt/autorecon/src/autorecon/config/service-scans.toml', regexp1: '\.xml', replace: '' }
-        - { path: '/opt/autorecon/src/autorecon/config/port-scan-profiles.toml', regexp1: '-oX', replace: '-oA' }
-        - { path: '/opt/autorecon/src/autorecon/config/port-scan-profiles.toml', regexp1: '\.xml', replace: '' }
+        - { path: '/opt/autorecon/src/autorecon/config/service-scans-default.toml', regexp1: '-oX', replace: '-oA' }
+        - { path: '/opt/autorecon/src/autorecon/config/service-scans-default.toml', regexp1: '\.xml', replace: '' }
+        - { path: '/opt/autorecon/src/autorecon/config/port-scan-profiles-default.toml', regexp1: '-oX', replace: '-oA' }
+        - { path: '/opt/autorecon/src/autorecon/config/port-scan-profiles-default.toml', regexp1: '\.xml', replace: '' }
 
     - name: Configure Responder
       replace:
@@ -43,13 +43,13 @@
     - name: Download .screenrc
       get_url:
         url: 'https://gist.githubusercontent.com/btnz-k/5cc3e77d12dca2e93ca10ba9b6d4c56a/raw/2f8f4185f7e1eee60be17b4fbc00f5aa676cb5a8/.screenrc'
-        dest: '/home/kali/.screenrc'
+        dest: '~/.screenrc'
         force: yes
 
     - name: Download .bashrc
       get_url:
         url: 'https://gist.githubusercontent.com/btnz-k/c79f19b59cc605c0c1ad82ddfcd87abc/raw/63827bdda9625eb9ac812fcee2f595a3de5fc817/.bashrc'
-        dest: '/home/kali/.bashrc'
+        dest: '~/.bashrc'
         force: yes
 
     - name: Download mount-shared-folders
