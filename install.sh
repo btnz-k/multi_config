@@ -5,7 +5,7 @@
 ################################################################################
 
 # List packages vital to the start process
-reqpackage="python-apt python3-apt aptitude ansible"
+reqpackage="python3-apt aptitude ansible"
 
 # make sure this is running as sudo
 if [ `whoami` != root ]; then
